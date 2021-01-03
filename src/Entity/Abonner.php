@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SubscriberRepository;
+use App\Repository\AbonnerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SubscriberRepository::class)
+ * @ORM\Entity(repositoryClass=AbonnerRepository::class)
  */
-class Subscriber
+class Abonner
 {
     /**
      * @ORM\Id

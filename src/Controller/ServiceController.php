@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,11 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/service")
+ * @IsGranted("ROLE_SERVICE")
  */
 class ServiceController extends AbstractController
 {
     /**
      * @Route("/", name="service_index", methods={"GET"})
+     * @param ServiceRepository $serviceRepository
+     * @return Response
      */
     public function index(ServiceRepository $serviceRepository): Response
     {
@@ -27,6 +31,8 @@ class ServiceController extends AbstractController
 
     /**
      * @Route("/new", name="service_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
